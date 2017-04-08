@@ -166,8 +166,7 @@ public class UserAccount {
 	 * @return true if User was successfully created
 	 */
 	public boolean createUser(String[] string){
-		this.username = string[0];
-		this.password = string[1];
+		
 		
 		return true;
 	}
