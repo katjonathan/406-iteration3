@@ -166,8 +166,11 @@ public class UserAccount {
 	 * @return true if User was successfully created
 	 */
 	public boolean createUser(String[] string){
-		
-		
+		this.username = string[0];
+		this.password = string[1];
+		this.telenum = Integer.parseInt(string[2]);
+		this.address = string[3];
+		this.email = string[4];
 		return true;
 	}
 }
