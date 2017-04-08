@@ -274,7 +274,15 @@ public class CypressFrame {
 		}
 	
 
-	
+	public String[] pack(String user, String pass, int tele, String addr, String email){
+		String[] userPackage = new String[5];
+		userPackage[0] = user;
+		userPackage[1] = pass;
+		userPackage[2] = Integer.toString(tele);
+		userPackage[3] = addr;
+		userPackage[4] = email;
+		return userPackage;
+	}
 	
 	
 	
