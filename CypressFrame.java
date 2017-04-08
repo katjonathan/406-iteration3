@@ -1,8 +1,14 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Point;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.image.BufferedImage;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -12,6 +18,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
@@ -50,10 +57,9 @@ public class CypressFrame {
 	private JTextField 
 	//textFields
 		txtUser,
-		txtPass,
 		txtAdd;
 	
-	private JLabel lblMsg;
+
 	
 	public CypressFrame(){
 	
@@ -68,8 +74,6 @@ public class CypressFrame {
 	lblTitle.setBounds(140,50,150,50);
 	JLabel lblGreetings = new JLabel("Sign in to start");
 	lblGreetings.setBounds(155,75,250,50);
-	lblMsg = new JLabel("Incorrect Log In");
-	lblMsg.setBounds(155,250,250,50);
 	logScreen.add(lblGreetings);
 	logScreen.add(lblTitle);
 	
@@ -79,9 +83,10 @@ public class CypressFrame {
 	logScreen.add(btnLogin);
 	
 	//Textboxes
-	txtUser = new JTextField("Username");
+	txtUser = new JTextField("Enter your Username");
 	txtUser.setBounds(115,150,175,25);
-	txtPass = new JTextField("Password");
+	txtUser.setForeground(Color.GRAY);
+	JPasswordField txtPass= new JPasswordField("");
 	txtPass.setBounds(115,200,175,25);
 	logScreen.add(txtUser);
 	logScreen.add(txtPass);
@@ -122,7 +127,8 @@ public class CypressFrame {
 	cmbPrbs.setBounds(50,160,300,25);
 	repScreen.add(cmbPrbs);
 	//textbox
-	txtAdd  = new JTextField("Address ");
+	txtAdd  = new JTextField("Enter the Address");
+	txtAdd.setForeground(Color.GRAY);
 	txtAdd.setBounds(50, 110, 300, 25);
 	repScreen.add(txtAdd);
 	//labels
@@ -146,6 +152,7 @@ public class CypressFrame {
 	sugScreen.setLayout(null);
 	//textArea
 	txtProb = new JTextArea("Add a Suggestion", 5,30);
+	txtProb.setForeground(Color.GRAY);
 	txtProb.setBounds(50,160,300,125);
 	Border border = BorderFactory.createLineBorder(Color.BLACK,1);
 	txtProb.setBorder(border);
@@ -223,14 +230,59 @@ public class CypressFrame {
 			frame.validate();
 			}
 		});
+
+	
 	
 
+//MouseListener	
+	MouseListener m1 = new MouseListener(){
+        public void mouseReleased(MouseEvent e) {	
+     
+        }
+        public void mousePressed(MouseEvent e) {
+        }
+        public void mouseExited(MouseEvent e) {
+        	txtUser.setText("Enter your Username");
+            txtAdd.setText("Enter the Address");
+            txtProb.setText("Add a Suggestion");
+            txtUser.getCaret().setVisible(false);
+            txtProb.getCaret().setVisible(false);
+            txtAdd.getCaret().setVisible(false);
+            
+        }
+        public void mouseEntered(MouseEvent e) {
+        	txtUser.setText("");
+            txtAdd.setText("");
+            txtProb.setText("");
+            txtUser.getCaret().setVisible(true);
+            txtProb.getCaret().setVisible(true);
+            txtAdd.getCaret().setVisible(true);
+        }
+        public void mouseClicked(MouseEvent e) {
+        	txtUser.setText("");
+            txtAdd.setText("");
+            txtProb.setText("");
+        }
+        
+	};
+	
+
+	
+	txtUser.addMouseListener(m1);
+	txtAdd.addMouseListener(m1);
+	txtProb.addMouseListener(m1);
 		}
 	
 
+	
+	
+	
+	
+	
 
 
 public static void main(String[] args) {
 	 new CypressFrame();
 	}
 }
+
