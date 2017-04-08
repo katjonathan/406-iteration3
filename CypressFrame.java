@@ -242,36 +242,65 @@ public class CypressFrame {
         public void mousePressed(MouseEvent e) {
         }
         public void mouseExited(MouseEvent e) {
-        	txtUser.setText("Enter your Username");
-            txtAdd.setText("Enter the Address");
-            txtProb.setText("Add a Suggestion");
             txtUser.getCaret().setVisible(false);
-            txtProb.getCaret().setVisible(false);
-            txtAdd.getCaret().setVisible(false);
-            
+   
         }
         public void mouseEntered(MouseEvent e) {
-        	txtUser.setText("");
-            txtAdd.setText("");
-            txtProb.setText("");
+            txtAdd.setText("Enter the Address");
+            txtProb.setText("Add a Suggestion");
             txtUser.getCaret().setVisible(true);
             txtProb.getCaret().setVisible(true);
             txtAdd.getCaret().setVisible(true);
         }
         public void mouseClicked(MouseEvent e) {
         	txtUser.setText("");
-            txtAdd.setText("");
-            txtProb.setText("");
         }
-        
 	};
 	
-
+	MouseListener m2 = new MouseListener(){
+        public void mouseReleased(MouseEvent e) {	
+        }
+        public void mousePressed(MouseEvent e) {
+        }
+        public void mouseExited(MouseEvent e) {
+            txtAdd.getCaret().setVisible(false);
+        }
+        public void mouseEntered(MouseEvent e) {
+        	txtUser.setText("Enter your Username");
+            txtProb.setText("Add a Suggestion");
+            txtUser.getCaret().setVisible(true);
+            txtProb.getCaret().setVisible(true);
+            txtAdd.getCaret().setVisible(true);
+        }
+        public void mouseClicked(MouseEvent e) {
+        	txtAdd.setText("");
+        }
+	};
+	
+	MouseListener m3 = new MouseListener(){
+        public void mouseReleased(MouseEvent e) {	
+        }
+        public void mousePressed(MouseEvent e) {
+        }
+        public void mouseExited(MouseEvent e) {
+            txtProb.getCaret().setVisible(false);           
+        }
+        public void mouseEntered(MouseEvent e) {
+        	txtUser.setText("Enter your Username");
+            txtAdd.setText("Enter the Address");
+            txtUser.getCaret().setVisible(true);
+            txtProb.getCaret().setVisible(true);
+            txtAdd.getCaret().setVisible(true);
+        }
+        public void mouseClicked(MouseEvent e) {
+            txtProb.setText("");
+        }
+	};
 	
 	txtUser.addMouseListener(m1);
-	txtAdd.addMouseListener(m1);
-	txtProb.addMouseListener(m1);
-		}
+	txtAdd.addMouseListener(m2);
+	txtProb.addMouseListener(m3);
+	}
 	
 
 	public String[] pack(String user, String pass, int tele, String addr, String email){
