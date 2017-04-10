@@ -197,7 +197,7 @@ public class CypressFrame {
 	sugScreen.add(btnSub1);
 	
 //frame settings
-	frame.add(logScreen);
+	frame.add(langScreen);
 	frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	frame.setSize(400,400);
 	frame.setTitle("Cypress");
