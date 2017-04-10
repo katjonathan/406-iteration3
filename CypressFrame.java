@@ -30,8 +30,12 @@ public class CypressFrame {
 	
 	private JFrame frame;
 	
+	//True if English(default), False if French
+	boolean language = true;
+	
 	private JPanel
 	//Screens
+		langScreen,
 		logScreen,
 		mainScreen,
 		repScreen,
@@ -39,6 +43,8 @@ public class CypressFrame {
 	
 	private JButton
 	//buttons
+		btnEN,
+		btnFR,
 		btnLogin,
 		btnProb,
 		btnSign,
@@ -65,6 +71,25 @@ public class CypressFrame {
 	
 	frame = new JFrame();
 	
+//Language Screen
+	langScreen = new JPanel();
+	langScreen.setLayout(null);
+	JLabel lblCYPRESS = new JLabel("CYPRESS");
+	lblCYPRESS.setFont(new Font("Serif", Font.BOLD, 30));
+	lblCYPRESS.setBounds(125,50,200,50);
+	JLabel lblToronto = new JLabel("City of Toronto");
+	lblToronto.setBounds(150,250,100,25);
+	langScreen.add(lblCYPRESS);
+	langScreen.add(lblToronto);
+	
+	//Buttons
+	btnEN = new JButton("English");
+	btnEN.setBounds(50,300,80,25);
+	btnFR = new JButton("French");
+	btnFR.setBounds(250,300,80,25);
+	langScreen.add(btnEN);
+	langScreen.add(btnFR);
+		
 //LogScreen	
 	//panel
 	logScreen = new JPanel();
@@ -180,16 +205,53 @@ public class CypressFrame {
 	frame.setVisible(true);
 	
 //btn actions 	
+		
+	btnEN.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e){
+			frame.setContentPane(logScreen);
+			frame.validate();
+		}
+	});
+	
+	btnFR.addActionListener(new ActionListener(){
+		public void actionPerformed(ActionEvent e){
+			language = false;
+			frame.setContentPane(logScreen);
+			//Login screen
+			lblTitle.setText("Bienvenue à CYPRESS!");
+			lblGreetings.setText("Connectez-vous pour commencer");
+			lblGreetings.setBounds(110,75,250,50);
+			txtUser.setText("Entrez votre nom d'utilisateur");
+			btnLogin.setText("S'identifier");
+			frame.validate();
+		}
+	});
+		
 	btnLogin.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e ){
 			frame.setContentPane(mainScreen);
+			if(!language){
+				setMTitle.setText("Choisissez une action");
+				setMTitle.setBounds(145,50,150,50);
+				setMMsg.setText("Bienvenue USERNAME");
+				btnProb.setText("Signaler un problème");
+				btnSugg.setText("Ajoutez une suggestion");
+				btnStat.setText("Vérifiez l'état");
+				btnSign.setText("Déconnexion");
+			}
 			frame.validate();
 			}
 		});
 	
 	btnProb.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e ){
-			
+			if(!language){
+				lblCyp.setText("Système CYPRESS");
+				lblAdd.setText("Entrez l'adresse ici");
+				txtAdd.setText("Entrez l'adresse");
+				lblProb.setText("Sélectionnez le problème ici:");
+				btnSub.setText("Soumettre");
+			}
 			frame.setContentPane(repScreen);
 			frame.validate();
 			}
@@ -200,6 +262,12 @@ public class CypressFrame {
 	btnSugg.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e ){
 			frame.setContentPane(sugScreen);
+			if(!language){
+				lblCyp1.setText("Système CYPRESS");
+				lblsugg.setText("Boîte à suggestion:");
+				txtProb.setText("Ajouter une suggestion ici");
+				btnSub1.setText("Soumettre");
+			}
 			frame.validate();
 			}
 		});
@@ -215,6 +283,7 @@ public class CypressFrame {
 		public void actionPerformed(ActionEvent e ){
 			System.out.println(cmbPrbs.getSelectedItem());
 			String sub = "Submission Sent";
+			if (!language) sub = "Soumission envoyée";
 			JOptionPane.showMessageDialog(null, sub, "InfoBox:" , JOptionPane.INFORMATION_MESSAGE);
 			frame.setContentPane(mainScreen);
 			frame.validate();
@@ -225,6 +294,7 @@ public class CypressFrame {
 	btnSub1.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e ){
 			String sub = "Submission has been received";
+			if (!language) sub = "La soumission a été reçue";
 			JOptionPane.showMessageDialog(null, sub, "InfoBox:" , JOptionPane.INFORMATION_MESSAGE);
 			frame.setContentPane(mainScreen);
 			frame.validate();
