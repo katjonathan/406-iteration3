@@ -324,6 +324,7 @@ public class CypressFrame {
         }
         public void mouseClicked(MouseEvent e) {
         	txtUser.setText("");
+		txtUser.setForeground(Color.BLACK);
         }
 	};
 	
@@ -344,6 +345,7 @@ public class CypressFrame {
         }
         public void mouseClicked(MouseEvent e) {
         	txtAdd.setText("");
+		txtAdd.setForeground(Color.BLACK);
         }
 	};
 	
@@ -364,6 +366,7 @@ public class CypressFrame {
         }
         public void mouseClicked(MouseEvent e) {
             txtProb.setText("");
+	    txtProb.setForeground(Color.BLACK);
         }
 	};
 	
