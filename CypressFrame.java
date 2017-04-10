@@ -245,6 +245,7 @@ public class CypressFrame {
 	
 	btnProb.addActionListener(new ActionListener(){
 		public void actionPerformed(ActionEvent e ){
+			frame.setContentPane(repScreen);
 			if(!language){
 				lblCyp.setText("Système CYPRESS");
 				lblAdd.setText("Entrez l'adresse ici");
@@ -252,7 +253,6 @@ public class CypressFrame {
 				lblProb.setText("Sélectionnez le problème ici:");
 				btnSub.setText("Soumettre");
 			}
-			frame.setContentPane(repScreen);
 			frame.validate();
 			}
 		});
