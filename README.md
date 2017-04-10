@@ -1,10 +1,7 @@
 # 406-iteration3
 CPS406 Iteration 3
 
-Database is very incomplete
 
-UserAccount and Report have basic functionality, both are still incomplete however
+The interactive map needs to be implemented
 
-CypressFrame is the name of the GUI, mostly complete but lacks the functionality that is to be added once the other classes are complete
-
-CypressSystem is yet to be implemented
+The actual functionality of the 3 main classes needs to be implemented with the GUI (i.e. no actual internal Report is created when the User selects "Submit", the GUI simply responds as if it were)
