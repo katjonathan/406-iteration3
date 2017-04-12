@@ -1,5 +1,3 @@
-package test;
-
 import java.util.*;
 
 /**
@@ -60,12 +58,14 @@ public class Database{
     }
 
     /**
-     * Adds a User to the database
+     * Adds a User to the database if user does not currently exist
      * @param user to be added
      * @return true if user was successfully added
      */
     public boolean addUser(UserAccount user){
-        users.put(user.getUserName(), user);
+		if(users.get(user.getUserName()) == null){
+			users.put(user.getUserName(), user);
+		}
         return true;
     }
 
@@ -178,7 +178,7 @@ public class Database{
      * A simple data structure to house the priority ranking
      * of concerns in the report list. 
      */
-    public class PriorityStructure implements Comparable<PriorityStructure>{
+    class PriorityStructure implements Comparable<PriorityStructure>{
         String concern; //The problem type
         String code;    //The report code of the problem
         int priority;   //The priority rating of the problem
@@ -190,7 +190,7 @@ public class Database{
         }
         @Override
         public int compareTo(PriorityStructure other){
-            return ~Integer.compare(this.priority,other.priority);
+            return Integer.compare(this.priority,other.priority);
         }
     }
     

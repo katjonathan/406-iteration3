@@ -1,4 +1,3 @@
-package test;
 import java.util.ArrayList;
 
 /**
@@ -38,7 +37,7 @@ public class UserAccount {
         telenum = "";
         address = "";
         email = "";
-        loggedIn = true;
+		loggedIn = true;
     }
     
     /**
@@ -221,19 +220,41 @@ public class UserAccount {
      * @param name to have validity checked
      * @return true is username is valid else false
      */
-/**
-    boolean checkValidName(Database database, String name){
-            if (database.getUser(name)) return false;
-            else return true;
+
+    public boolean checkValidName(String name){
+            if(name.equals("") || name.matches("^( )*$"))
+				return false;
+			else
+				return true;
     }
-**/
+
     /**
      * Checks if the entered password is valid
      * @return true if password is valid else false
      */
-/**
-    boolean checkValidPass(String pass){
-        return true;
+
+    public boolean checkValidPass(String pass){
+		if(pass.equals(""))
+		{
+			return false;
+		}
+		else
+		{
+			return true;
+		}		
     }
-**/    
+    
+	/**
+	 * Returns a string representation of UserAccount
+	 * Used primarily for debugging
+	 * @return a string representation of UserAccount object
+	*/
+	public String toString()
+	{
+		return new String("USERNAME:  "+username+
+						"\nPASSWORD:  "+password+
+						"\nTELEPHONE:  "+telenum+
+						"\nADDRESS:  "+address+
+						"\nEMAIL:  "+email+"\n");
+	}
 }

@@ -1,4 +1,3 @@
-package test;
 /**
  * A Report is created and submitted to the CYPRESS system by users (citizens)
  * and contains information regarding location and nature of the complaint
